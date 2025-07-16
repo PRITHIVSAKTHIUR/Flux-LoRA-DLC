@@ -29,8 +29,6 @@ from diffusers.utils import load_image
 
 import spaces
 
-#---if workspace = local or colab---
-
 # Authenticate with Hugging Face
 # from huggingface_hub import login
 
@@ -2420,4 +2418,4 @@ with gr.Blocks(theme=gr.themes.Soft(), css=css, delete_cache=(60, 60)) as app:
     )
 
 app.queue()
-app.launch(ssr_mode=False)
+app.launch(mcp_server=True, ssr_mode=False, show_error=True)
