@@ -29,13 +29,6 @@ from diffusers.utils import load_image
 
 import spaces
 
-# Authenticate with Hugging Face
-# from huggingface_hub import login
-
-# Log in to Hugging Face using the provided token
-# hf_token = 'hf-token-authentication'
-# login(hf_token)
-
 def calculate_shift(
     image_seq_len,
     base_seq_len: int = 256,
@@ -192,6 +185,13 @@ def flux_pipe_call_that_returns_an_iterable_of_images(
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------#
 loras = [
+    #19
+    {
+        "image": "https://huggingface.co/alvdansen/flux-koda/resolve/main/images/ComfyUI_00583_%20(1).png",
+        "title": "Koda",
+        "repo": "alvdansen/flux-koda",
+        "trigger_word": "flmft style"
+    },
     #Super-Realism
     {
         "image": "https://huggingface.co/strangerzonehf/Flux-Super-Realism-LoRA/resolve/main/images/1.png",
@@ -464,13 +464,6 @@ loras = [
         "title": "Realism",
         "repo": "XLabs-AI/flux-RealismLora",
         "trigger_word": ""
-    },
-    #19
-    {
-        "image": "https://huggingface.co/alvdansen/flux-koda/resolve/main/images/ComfyUI_00583_%20(1).png",
-        "title": "Koda",
-        "repo": "alvdansen/flux-koda",
-        "trigger_word": "flmft style"
     },
     #20
     {
@@ -2346,11 +2339,8 @@ css = '''
 .progress-bar {height: 100%;background-color: #4f46e5;width: calc(var(--current) / var(--total) * 100%);transition: width 0.5s ease-in-out}
 '''
 
-with gr.Blocks(theme=gr.themes.Soft(), css=css, delete_cache=(60, 60)) as app:
-    title = gr.HTML(
-        """<h1>FLUX LoRA DLC🥳</h1>""",
-        elem_id="title",
-    )
+with gr.Blocks(theme="bethecloud/storj_theme", css=css, delete_cache=(60, 60)) as app:
+    title = gr.HTML("""<h1>FLUX LoRA DLC🥳</h1>""", elem_id="title",)
     selected_index = gr.State(None)
     with gr.Row():
         with gr.Column(scale=3):
@@ -2418,4 +2408,4 @@ with gr.Blocks(theme=gr.themes.Soft(), css=css, delete_cache=(60, 60)) as app:
     )
 
 app.queue()
-app.launch(mcp_server=True, ssr_mode=False, show_error=True)
+app.launch(share=True, mcp_server=True, ssr_mode=False, show_error=True)
