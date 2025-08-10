@@ -29,6 +29,18 @@ from diffusers.utils import load_image
 
 import spaces
 
+# ---- CUDA Check ----
+print("CUDA_VISIBLE_DEVICES=", os.environ.get("CUDA_VISIBLE_DEVICES"))
+print("torch.__version__ =", torch.__version__)
+print("torch.version.cuda =", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+print("cuda device count:", torch.cuda.device_count())
+if torch.cuda.is_available():
+    print("current device:", torch.cuda.current_device())
+    print("device name:", torch.cuda.get_device_name(torch.cuda.current_device()))
+
+print("Using device:", device)
+
 def calculate_shift(
     image_seq_len,
     base_seq_len: int = 256,
@@ -2344,7 +2356,7 @@ with gr.Blocks(theme="bethecloud/storj_theme", css=css, delete_cache=(60, 60)) a
     selected_index = gr.State(None)
     with gr.Row():
         with gr.Column(scale=3):
-            prompt = gr.Textbox(label="Prompt", lines=1, placeholder=":/ choose the LoRA and type the prompt ")
+            prompt = gr.Textbox(label="Prompt", lines=1, placeholder="✦︎ Choose the LoRA and type the prompt")
         with gr.Column(scale=1, elem_id="gen_column"):
             generate_button = gr.Button("Generate", variant="primary", elem_id="gen_btn")
     with gr.Row():
@@ -2408,4 +2420,4 @@ with gr.Blocks(theme="bethecloud/storj_theme", css=css, delete_cache=(60, 60)) a
     )
 
 app.queue()
-app.launch(share=True, mcp_server=True, ssr_mode=False, show_error=True)
+app.launch(share=False, ssr_mode=False, show_error=True)
