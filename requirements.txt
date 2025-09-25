@@ -1,8 +1,10 @@
+git+https://github.com/huggingface/transformers.git
+git+https://github.com/huggingface/accelerate.git
 git+https://github.com/huggingface/diffusers.git
 git+https://github.com/huggingface/peft.git
-git+https://github.com/huggingface/accelerate.git
-git+https://github.com/huggingface/transformers.git
-safetensors
-sentencepiece
+gradio-imageslider
+huggingface_hub
+sentencepiece 
+torchvision
 spaces
-hf_xet
+torch
