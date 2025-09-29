@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional, Union
 import torch
 from PIL import Image
 import gradio as gr
+import spaces
 
 from diffusers import (
     DiffusionPipeline,
@@ -26,20 +27,6 @@ from huggingface_hub import (
     snapshot_download)
 
 from diffusers.utils import load_image
-
-import spaces
-
-# ---- CUDA Check ----
-print("CUDA_VISIBLE_DEVICES=", os.environ.get("CUDA_VISIBLE_DEVICES"))
-print("torch.__version__ =", torch.__version__)
-print("torch.version.cuda =", torch.version.cuda)
-print("cuda available:", torch.cuda.is_available())
-print("cuda device count:", torch.cuda.device_count())
-if torch.cuda.is_available():
-    print("current device:", torch.cuda.current_device())
-    print("device name:", torch.cuda.get_device_name(torch.cuda.current_device()))
-
-print("Using device:", device)
 
 def calculate_shift(
     image_seq_len,
@@ -2159,7 +2146,7 @@ def update_selection(evt: gr.SelectData, width, height):
         height,
     )
 
-@spaces.GPU(duration=100)
+@spaces.GPU(duration=99)
 def generate_image(prompt_mash, steps, seed, cfg_scale, width, height, lora_scale, progress):
     pipe.to("cuda")
     generator = torch.Generator(device="cuda").manual_seed(seed)
@@ -2196,7 +2183,7 @@ def generate_image_to_image(prompt_mash, image_input_path, image_strength, steps
     ).images[0]
     return final_image 
 
-@spaces.GPU(duration=100)
+@spaces.GPU(duration=99)
 def run_lora(prompt, image_input, image_strength, cfg_scale, steps, selected_index, randomize_seed, seed, width, height, lora_scale, progress=gr.Progress(track_tqdm=True)):
     if selected_index is None:
         raise gr.Error("You must select a LoRA before proceeding.🧨")
