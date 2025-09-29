@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/09318576-006d-4ccd-8efc-0360c7b289e3
 
-This repository hosts a Gradio web interface designed to explore the capabilities of the **FLUX.1-dev** diffusion model combined with an extensive collection of community-created **LoRAs (Low-Rank Adaptations)**. It provides an easy way to generate images in various styles defined by these LoRAs, supporting both Text-to-Image and Image-to-Image generation.
+> This repository hosts a Gradio web interface designed to explore the capabilities of the **FLUX.1-dev** diffusion model combined with an extensive collection of community-created **LoRAs (Low-Rank Adaptations)**. It provides an easy way to generate images in various styles defined by these LoRAs, supporting both Text-to-Image and Image-to-Image generation.
 
 The "DLC" (Downloadable Content) in the name playfully refers to the massive, ever-growing library of LoRAs integrated into the app, allowing users to instantly "download" and apply different artistic styles.
 
@@ -119,3 +119,4 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 ## License
 
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details. (You'll need to add an Apache 2.0 LICENSE file to your repo).
+
