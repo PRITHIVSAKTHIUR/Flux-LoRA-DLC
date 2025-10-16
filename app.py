@@ -2407,4 +2407,4 @@ with gr.Blocks(theme="bethecloud/storj_theme", css=css, delete_cache=(60, 60)) a
     )
 
 app.queue()
-app.launch(share=False, ssr_mode=False, show_error=True)
+app.launch(mcp_server=True, ssr_mode=False, show_error=True)
