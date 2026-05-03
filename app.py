@@ -2192,7 +2192,7 @@ with gr.Blocks(delete_cache=(60, 60)) as demo:
     selected_index = gr.State(None)
     with gr.Row():
         with gr.Column(scale=3):
-            prompt = gr.Textbox(label="Prompt", lines=1, placeholder="✦︎ Choose the LoRA and type the prompt")
+            prompt = gr.Textbox(label="Enter Prompt", lines=1, placeholder="✦︎ Choose the LoRA and type the prompt")
         with gr.Column(scale=1, elem_id="gen_column"):
             generate_button = gr.Button("Generate", variant="primary", elem_id="gen_btn")
     with gr.Row():
@@ -2213,7 +2213,7 @@ with gr.Blocks(delete_cache=(60, 60)) as demo:
             custom_lora_button = gr.Button("Remove custom LoRA", visible=False)
         with gr.Column():
             progress_bar = gr.Markdown(elem_id="progress",visible=False)
-            result = gr.Image(label="Generated Image", format="png")
+            result = gr.Image(label="Generated Image", format="png", height=610)
 
     with gr.Row():
         with gr.Accordion("Advanced Settings", open=False):
