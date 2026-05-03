@@ -1,10 +1,11 @@
 git+https://github.com/huggingface/accelerate.git
 git+https://github.com/huggingface/diffusers.git
-git+https://github.com/huggingface/peft.git
 huggingface_hub
 sentencepiece 
-transformers
+transformers==4.57.6
 torchvision
+gradio==6.14.0
 spaces
 torch
 numpy
+peft
